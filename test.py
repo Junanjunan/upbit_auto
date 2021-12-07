@@ -1,14 +1,15 @@
 import time
+from typing import DefaultDict
 import pyupbit
 
-access = "xP8bxkf6tZ4HTKPVdye4Md2efkhNvJ9mBY7cDuWC"          # 본인 값으로 변경
-secret = "Jq4gMOug15qH1rPCxte67OOzWYPCzn4duuMxZI5W"          # 본인 값으로 변경
+access = "xsh6wVoCZRYgho6pZSysS2vIBJKJB95OsUM6FPK8"          # 본인 값으로 변경
+secret = "XEgphpenMNKFbOC0kK86cCxlPMDTCrnH29noO3mS"          # 본인 값으로 변경
 upbit = pyupbit.Upbit(access, secret)
 
 # print(upbit.get_balance("KRW-XRP"))
 # print(upbit.get_balance("KRW"))
 
-# print(upbit.get_balance("KRW-BTC"))
+print(upbit.get_balance("KRW-BTC"))
 # print(upbit.get_avg_buy_price("KRW-BTC"))
 # print(upbit.get_amount("KRW-BTC"))
 # print(upbit.get_chance("KRW-BTC"))
@@ -37,7 +38,7 @@ upbit = pyupbit.Upbit(access, secret)
 # upbit.sell_limit_order("KRW-ETH", 5000000, 0.001)
 
 
-print(upbit.get_chance("KRW-ETH"))
+# print(upbit.get_chance("KRW-ETH"))
 
 
 # while True:
@@ -48,3 +49,18 @@ print(upbit.get_chance("KRW-ETH"))
 #     except:
 #         print("Error")
 #         time.sleep(2)
+
+# amount = upbit.get_amount("KRW-BTC")
+# balance = upbit.get_balance("KRW-BTC")
+# avg_buy_price = upbit.get_avg_buy_price("KRW-BTC")
+
+# current_price = pyupbit.get_current_price("KRW-BTC")
+
+# print("amount:", amount,"원")
+# print("balance:", balance,"BTC")
+# print("avg_buy_price:", avg_buy_price, "원")
+# print("-"*100)
+# print("current_price:", current_price, "원")
+
+# earning_ratio = (current_price-avg_buy_price)/avg_buy_price
+# print(earning_ratio)

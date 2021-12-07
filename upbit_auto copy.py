@@ -22,16 +22,20 @@ while True:
     print("balance_7000_BTC:", balance_7000_BTC)
 
     try:
-        if upbit.get_balance(BTC) < balance_7000_BTC:
+        if avg_buy_price_BTC == 0:
             upbit.buy_market_order(BTC, 7000)
-            print("비트코인,", upbit.get_amount(BTC), "원 남은 상태에서 7000원어치 매수")
+            print("비트코인 첫구매: 시장가 7000 매수")
         else:
             earning_ratio_BTC = (current_price_BTC-avg_buy_price_BTC)/avg_buy_price_BTC*100
             print("비트코인 earning_ratio_BTC:", earning_ratio_BTC)
             
             if earning_ratio_BTC > 3:
-                upbit.sell_market_order(BTC, balance_7000_BTC)
-                print("비트코인 시장가 7000 매도")
+                if upbit.get_balance(BTC) < balance_7000_BTC:
+                    upbit.buy_market_order(BTC, 7000)
+                    print("비트코인,", upbit.get_amount(BTC), "원 남은 상태에서 7000원어치 매수")
+                else:
+                    upbit.sell_market_order(BTC, balance_7000_BTC)
+                    print("비트코인 시장가 7000 매도")
 
             elif earning_ratio_BTC < 0:
                 upbit.buy_market_order(BTC, 7000)
@@ -56,7 +60,7 @@ while True:
 
 
     try:
-        if upbit.get_balance(ETH) < balance_7000_ETH:
+        if avg_buy_price_ETH == 0:
             upbit.buy_market_order(ETH, 7000)
             print("이더리움 첫구매: 시장가 7000 매수")
         else:
@@ -64,8 +68,12 @@ while True:
             print("이더리움 earning_ratio_ETH:", earning_ratio_ETH)
             
             if earning_ratio_ETH > 3:
-                upbit.sell_market_order(ETH, balance_7000_ETH)
-                print("이더리움 시장가 7000 매도")
+                if upbit.get_balance(ETH) < balance_7000_ETH:
+                    upbit.buy_market_order(ETH, 7000)
+                    print("이더리움,", upbit.get_amount(ETH), "원 남은 상태에서 7000원어치 매수")
+                else:
+                    upbit.sell_market_order(ETH, balance_7000_ETH)
+                    print("이더리움 시장가 7000 매도")
             
             elif earning_ratio_ETH < 0:
                 upbit.buy_market_order(ETH, 7000)
