@@ -1,9 +1,10 @@
 import time
 import datetime
 import pyupbit
+import os
 
-access = "xrVHh9YVgZaIYGQJDxxflIx708c9HS0OYwPAPdQx"
-secret = "NxjRwBauW6CRRlMiIwXjVNsrBn5ndSe14AcbhWAj"
+access = os.environ.get("UPBIT_ACCESS_KEY_office")          # 본인 값으로 변경
+secret = os.environ.get("UPBIT_SECRET_KEY_office")  
 upbit = pyupbit.Upbit(access, secret)
 
 BTC = "KRW-BTC"

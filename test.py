@@ -1,9 +1,10 @@
 import time
 from typing import DefaultDict
 import pyupbit
+import os
 
-access = "xsh6wVoCZRYgho6pZSysS2vIBJKJB95OsUM6FPK8"          # 본인 값으로 변경
-secret = "XEgphpenMNKFbOC0kK86cCxlPMDTCrnH29noO3mS"          # 본인 값으로 변경
+access = os.environ.get("UPBIT_ACCESS_KEY_office")          # 본인 값으로 변경
+secret = os.environ.get("UPBIT_SECRET_KEY_office")          # 본인 값으로 변경
 upbit = pyupbit.Upbit(access, secret)
 
 # print(upbit.get_balance("KRW-XRP"))
